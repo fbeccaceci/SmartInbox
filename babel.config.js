@@ -5,7 +5,8 @@ module.exports = {
       "root": ["./src"],
       "alias": {
         "styles": "./src/styles",
-        "screens": "./src/screens"
+        "screens": "./src/screens",
+        "assets": "./src/assets",
       }
     }]
   ]

@@ -62,7 +62,8 @@
     "paths": {
       "*": ["src/*"],
       "styles/*": ["styles/*"],
-      "screens/*": ["screens/*"]
+      "screens/*": ["screens/*"],
+      "assets/*": ["assets/*"]
     }
   },
   "exclude": [
