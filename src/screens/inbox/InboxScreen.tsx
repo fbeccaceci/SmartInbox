@@ -9,9 +9,9 @@ const InboxScreen: React.FC = () => {
     <View style={styles.container}>
       <NavigationBar />
 
-      <Text>
+      <Text style={styles.headerContainer} >
         <Text style={styles.welcomeText} >Welcome to{'\n'}</Text>
-        <Text>Inbox</Text>
+        <Text style={styles.inboxText} >Inbox</Text>
       </Text>
     </View>
   );

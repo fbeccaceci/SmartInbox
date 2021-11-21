@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {Palette, Typography} from '@styles'
+import {Padding, Palette, Typography} from '@styles'
 
 export default StyleSheet.create({
   container: {
@@ -7,8 +7,18 @@ export default StyleSheet.create({
     alignItems: 'center',
     backgroundColor: Palette.background
   },
+  headerContainer: {
+    width: "100%",
+    paddingHorizontal: Padding.xl,
+    marginVertical: Padding.m
+  },
   welcomeText: { 
     ...Typography.pageTitle,
-    fontFamily: "Poppins-Bold"
+    fontFamily: "Poppins-Regular",
+    fontSize: 24
+  },
+  inboxText: {
+    ...Typography.pageTitle,
+    lineHeight: 60
   }
 });

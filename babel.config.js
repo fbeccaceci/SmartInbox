@@ -7,6 +7,7 @@ module.exports = {
         "@styles": "./src/styles",
         "@screens": "./src/screens",
         "@assets": "./src/assets",
+        "@components": "./src/components",
       }
     }]
   ]
