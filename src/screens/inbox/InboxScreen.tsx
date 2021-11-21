@@ -8,6 +8,11 @@ const InboxScreen: React.FC = () => {
   return (
     <View style={styles.container}>
       <NavigationBar />
+
+      <Text>
+        <Text style={styles.welcomeText} >Welcome to{'\n'}</Text>
+        <Text>Inbox</Text>
+      </Text>
     </View>
   );
 };

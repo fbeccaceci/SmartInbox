@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { Padding } from 'styles'
+import { Padding } from '@styles'
 
 export default StyleSheet.create({
   container: {

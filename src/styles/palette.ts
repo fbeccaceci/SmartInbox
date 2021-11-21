@@ -4,4 +4,6 @@ export default {
   textPrimary: '#FFFFFF',
   textSecondary: '#CCCDCD',
   textTernary: '#727373',
+
+  white: "#ffffff"
 };

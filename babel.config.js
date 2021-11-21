@@ -4,9 +4,9 @@ module.exports = {
     ["module-resolver", {
       "root": ["./src"],
       "alias": {
-        "styles": "./src/styles",
-        "screens": "./src/screens",
-        "assets": "./src/assets",
+        "@styles": "./src/styles",
+        "@screens": "./src/screens",
+        "@assets": "./src/assets",
       }
     }]
   ]

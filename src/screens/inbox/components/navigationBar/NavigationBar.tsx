@@ -1,11 +1,11 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Image from 'react-native-fast-image'
 
 import styles from './navigationBarStyle'
-import searchIcon from 'assets/images/navigationBar/search-icon.png'
-import sendIcon from  'assets/images/navigationBar/send-icon.png'
+import searchIcon from '@assets/images/navigationBar/search-icon.png'
+import sendIcon from  '@assets/images/navigationBar/send-icon.png'
 
 const NavigationBar: React.FC = () => {
 

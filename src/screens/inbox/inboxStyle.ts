@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {Palette} from 'styles'
+import {Palette, Typography} from '@styles'
 
 export default StyleSheet.create({
   container: {
@@ -7,4 +7,8 @@ export default StyleSheet.create({
     alignItems: 'center',
     backgroundColor: Palette.background
   },
+  welcomeText: { 
+    ...Typography.pageTitle,
+    fontFamily: "Poppins-Bold"
+  }
 });
