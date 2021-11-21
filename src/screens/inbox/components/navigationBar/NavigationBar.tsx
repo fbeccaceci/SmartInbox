@@ -1,11 +1,10 @@
 import React from 'react';
 import {View} from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import Image from 'react-native-fast-image'
 
 import styles from './navigationBarStyle'
-import searchIcon from '@assets/images/navigationBar/search-icon.png'
-import sendIcon from  '@assets/images/navigationBar/send-icon.png'
+import SearchIcon from "@assets/images/navigationBar/search-icon.svg"
+import SendIcon from "@assets/images/navigationBar/send-icon.svg"
 
 const NavigationBar: React.FC = () => {
 
@@ -13,8 +12,8 @@ const NavigationBar: React.FC = () => {
 
   return (
     <View style={[styles.container, {marginTop: insets.top}]}>
-      <Image source={searchIcon} style={styles.icon} />
-      <Image source={sendIcon} style={styles.icon} />
+      <SearchIcon style={styles.icon} />
+      <SendIcon style={styles.icon} />
     </View>
   );
 };
