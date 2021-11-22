@@ -8,6 +8,8 @@ module.exports = {
         "@screens": "./src/screens",
         "@assets": "./src/assets",
         "@components": "./src/components",
+        "@models": "./src/models",
+        "@utils": "./src/utils",
       }
     }]
   ]
