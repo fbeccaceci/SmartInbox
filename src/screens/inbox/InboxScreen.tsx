@@ -1,9 +1,12 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, FlatList, Text} from 'react-native';
+import Animated, {useSharedValue, useAnimatedScrollHandler} from 'react-native-reanimated'
 
 import styles from './inboxStyle';
-import {InboxCard, NavigationBar} from './components'
+import {InboxCard, NavigationBar, Title} from './components'
 import { InboxCardModel } from '@models';
+
+const AnimatedFlatList = Animated.createAnimatedComponent(FlatList)
 
 const cards: InboxCardModel[] = [
   {
@@ -12,20 +15,119 @@ const cards: InboxCardModel[] = [
     object: "Random Mail object",
     content: "Some random content of the mail, some more random content, again even more random content, and again and again",
     date: new Date()
-  }
+  },
+  {
+    profilePicture: "https://w3schools.com/howto/img_avatar.png",
+    sender: "Mario Rossi",
+    object: "Random Mail object",
+    content: "Some random content of the mail, some more random content, again even more random content, and again and again",
+    date: new Date()
+  },
+  {
+    profilePicture: "https://w3schools.com/howto/img_avatar.png",
+    sender: "Mario Rossi",
+    object: "Random Mail object",
+    content: "Some random content of the mail, some more random content, again even more random content, and again and again",
+    date: new Date()
+  },
+  {
+    profilePicture: "https://w3schools.com/howto/img_avatar.png",
+    sender: "Mario Rossi",
+    object: "Random Mail object",
+    content: "Some random content of the mail, some more random content, again even more random content, and again and again",
+    date: new Date()
+  },
+  {
+    profilePicture: "https://w3schools.com/howto/img_avatar.png",
+    sender: "Mario Rossi",
+    object: "Random Mail object",
+    content: "Some random content of the mail, some more random content, again even more random content, and again and again",
+    date: new Date()
+  },
+  {
+    profilePicture: "https://w3schools.com/howto/img_avatar.png",
+    sender: "Mario Rossi",
+    object: "Random Mail object",
+    content: "Some random content of the mail, some more random content, again even more random content, and again and again",
+    date: new Date()
+  },
+  {
+    profilePicture: "https://w3schools.com/howto/img_avatar.png",
+    sender: "Mario Rossi",
+    object: "Random Mail object",
+    content: "Some random content of the mail, some more random content, again even more random content, and again and again",
+    date: new Date()
+  },
+  {
+    profilePicture: "https://w3schools.com/howto/img_avatar.png",
+    sender: "Mario Rossi",
+    object: "Random Mail object",
+    content: "Some random content of the mail, some more random content, again even more random content, and again and again",
+    date: new Date()
+  },
+  {
+    profilePicture: "https://w3schools.com/howto/img_avatar.png",
+    sender: "Mario Rossi",
+    object: "Random Mail object",
+    content: "Some random content of the mail, some more random content, again even more random content, and again and again",
+    date: new Date()
+  },
+  {
+    profilePicture: "https://w3schools.com/howto/img_avatar.png",
+    sender: "Mario Rossi",
+    object: "Random Mail object",
+    content: "Some random content of the mail, some more random content, again even more random content, and again and again",
+    date: new Date()
+  },
+  {
+    profilePicture: "https://w3schools.com/howto/img_avatar.png",
+    sender: "Mario Rossi",
+    object: "Random Mail object",
+    content: "Some random content of the mail, some more random content, again even more random content, and again and again",
+    date: new Date()
+  },
+  {
+    profilePicture: "https://w3schools.com/howto/img_avatar.png",
+    sender: "Mario Rossi",
+    object: "Random Mail object",
+    content: "Some random content of the mail, some more random content, again even more random content, and again and again",
+    date: new Date()
+  },
 ]
 
 const InboxScreen: React.FC = () => {
+
+  const scrollY = useSharedValue(0)
+
+  const scrollHandler = useAnimatedScrollHandler({
+    onScroll: ({contentOffset}) => {
+      scrollY.value = contentOffset.y
+    }
+  })
+
+  const ItemSeparator = <View style={styles.flatListItemSeparator} />
+
   return (
     <View style={styles.container}>
-      <NavigationBar />
-
-      <Text style={styles.headerContainer} >
-        <Text style={styles.welcomeText} >Welcome to{'\n'}</Text>
-        <Text style={styles.inboxText} >Inbox</Text>
-      </Text>
-
-      <InboxCard model={cards[0]} />
+      <AnimatedFlatList
+        onScroll={scrollHandler}
+        scrollEventThrottle={16} 
+        style={styles.flatList}
+        contentContainerStyle={styles.flatListContent}
+        ListHeaderComponent={() => <NavigationBar scroll={scrollY} />}
+        ListHeaderComponentStyle={styles.flatListHeaderContainer}
+        stickyHeaderIndices={[0]}
+        data={cards} 
+        renderItem={({item, index}) => {
+          if(index === 0) {
+            return <>
+              <Title scroll={scrollY} />
+              <InboxCard model={item as InboxCardModel} />
+            </>
+          }
+          return <InboxCard model={item as InboxCardModel} />
+        }}
+        ItemSeparatorComponent={() => ItemSeparator} />
     </View>
   );
 };
