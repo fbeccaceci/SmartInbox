@@ -1,10 +1,12 @@
 import React from 'react';
 import {View, FlatList, Text} from 'react-native';
 import Animated, {useSharedValue, useAnimatedScrollHandler} from 'react-native-reanimated'
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import styles from './inboxStyle';
 import {InboxCard, NavigationBar, Title} from './components'
 import { InboxCardModel } from '@models';
+import { Padding } from '@styles';
 
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList)
 
@@ -96,6 +98,7 @@ const cards: InboxCardModel[] = [
 ]
 
 const InboxScreen: React.FC = () => {
+  const insets = useSafeAreaInsets()
 
   const scrollY = useSharedValue(0)
 
@@ -113,7 +116,7 @@ const InboxScreen: React.FC = () => {
         onScroll={scrollHandler}
         scrollEventThrottle={16} 
         style={styles.flatList}
-        contentContainerStyle={styles.flatListContent}
+        contentContainerStyle={[styles.flatListContent, {paddingBottom: insets.bottom + Padding.m}]}
         ListHeaderComponent={() => <NavigationBar scroll={scrollY} />}
         ListHeaderComponentStyle={styles.flatListHeaderContainer}
         stickyHeaderIndices={[0]}
