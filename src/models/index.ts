@@ -1,1 +1,1 @@
-export type {default as InboxCardModel} from './inboxCard'
+export type {default as InboxCardModel} from './inboxCardModel'
