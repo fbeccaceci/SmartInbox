@@ -67,7 +67,9 @@
       "@components": ["src/components"],
       "@models": ["src/models"],
       "@utils": ["src/utils"],
-      "@redux/*": ["src/redux/*"]
+      "@redux/*": ["src/redux/*"],
+      "@services/*": ["src/services/*"],
+      "@services": ["src/services"]
     }
   },
   "exclude": [
