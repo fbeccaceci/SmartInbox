@@ -4,22 +4,19 @@ import { Provider } from 'react-redux'
 import { NavigationContainer } from '@react-navigation/native';
 
 import { store } from '@redux/store';
-import { AuthorizationLifeCycleWrapper } from '@components';
-import { InboxStack } from '@navigators';
+import { AuthenticationFlowNavigator } from '@navigators';
 
 import './configs/momentConfig'
 import './services/authenticationService'
 
 const App: React.FC = () => {
-  
+
   return (
     <NavigationContainer>
       <Provider store={store} >
-        <AuthorizationLifeCycleWrapper>
           <SafeAreaProvider>
-            <InboxStack />
+            <AuthenticationFlowNavigator />
           </SafeAreaProvider>
-        </AuthorizationLifeCycleWrapper>
       </Provider>
     </NavigationContainer>
   )

@@ -28,3 +28,12 @@ export const selectAuthStatus = createSelector(
   selectSelf,
   state => state.authStatus
 )
+
+export const selectIsAuthenticated = createSelector(
+  selectSelf,
+  state => (
+    state.authToken !== undefined
+    && state.authTokenExpirationDate !== undefined
+    && state.refreshToken !== undefined
+  )
+)
