@@ -69,7 +69,8 @@
       "@utils": ["src/utils"],
       "@redux/*": ["src/redux/*"],
       "@services/*": ["src/services/*"],
-      "@services": ["src/services"]
+      "@services": ["src/services"],
+      "@hooks": ["src/hooks"]
     }
   },
   "exclude": [

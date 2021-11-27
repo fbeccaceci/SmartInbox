@@ -19,7 +19,7 @@ const authSlice = createSlice({
       state.authTokenExpirationDate = payload.accessTokenExpirationDate
       state.refreshToken = payload.refreshToken
     })
-  }
+  } 
 })
 
 export default authSlice

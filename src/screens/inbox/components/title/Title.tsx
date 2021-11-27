@@ -14,7 +14,7 @@ const Title: React.FC<Props> = ({scroll}) => {
   const progress  = useDerivedValue(() => interpolate(scroll.value, [0, MAX_SCROLL], [0, 1], Extrapolate.CLAMP), [scroll])
 
   const animStyle = useAnimatedStyle(() => ({
-    opacity: 1 - progress.value
+    opacity: 1 - progress.value,
   }))
   
   return (

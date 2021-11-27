@@ -1,9 +1,13 @@
 import { Padding, Typography } from "@styles";
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
+
+const WIDTH = Dimensions.get("window").width
 
 export default StyleSheet.create({
   container: {
-    marginVertical: Padding.m
+    marginVertical: Padding.m,
+    width: WIDTH,
+    paddingHorizontal: Padding.xl
   },
   welcomeText: { 
     ...Typography.pageTitle,

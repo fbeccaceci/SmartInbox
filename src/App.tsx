@@ -10,6 +10,7 @@ import './services/authenticationService'
 import { AuthorizationLifeCycleWrapper } from '@components';
 
 const App: React.FC = () => {
+  
   return <Provider store={store} >
     <AuthorizationLifeCycleWrapper>
       <SafeAreaProvider>

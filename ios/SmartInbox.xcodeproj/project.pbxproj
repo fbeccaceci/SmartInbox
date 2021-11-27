@@ -22,6 +22,7 @@
 		AC0C4F9CAF7746A8915FE3B9 /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1EF46692C319464E85C84170 /* Poppins-Thin.ttf */; };
 		C5492065274E9B5100835E43 /* MailClientModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5492064274E9B5100835E43 /* MailClientModule.swift */; };
 		C5492067274E9B9E00835E43 /* MailModuleBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = C5492066274E9B9E00835E43 /* MailModuleBridge.m */; };
+		C5A3C103275275500044A77B /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A3C102275275500044A77B /* DateExtension.swift */; };
 		C5DE4414274FE09D00ED2959 /* MailMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DE4413274FE09D00ED2959 /* MailMessage.swift */; };
 		E64EA3DA01A447F1913F8B7E /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 98C630A3420849E2BD1B6A70 /* Poppins-Light.ttf */; };
 /* End PBXBuildFile section */
@@ -59,6 +60,7 @@
 		C549205E274E982D00835E43 /* SmartInbox-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SmartInbox-Bridging-Header.h"; sourceTree = "<group>"; };
 		C5492064274E9B5100835E43 /* MailClientModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailClientModule.swift; sourceTree = "<group>"; };
 		C5492066274E9B9E00835E43 /* MailModuleBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MailModuleBridge.m; sourceTree = "<group>"; };
+		C5A3C102275275500044A77B /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		C5DE4413274FE09D00ED2959 /* MailMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailMessage.swift; sourceTree = "<group>"; };
 		D00AAFFCFCFDA5787532823F /* Pods-SmartInbox.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartInbox.release.xcconfig"; path = "Target Support Files/Pods-SmartInbox/Pods-SmartInbox.release.xcconfig"; sourceTree = "<group>"; };
 		D4A0312689A64289A46170BF /* Poppins-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Black.ttf"; path = "../src/assets/fonts/Poppins-Black.ttf"; sourceTree = "<group>"; };
@@ -163,12 +165,21 @@
 		C549205D274E980900835E43 /* MailClientModule */ = {
 			isa = PBXGroup;
 			children = (
+				C5A3C101275275410044A77B /* Extensions */,
 				C5DE4412274FE08B00ED2959 /* Models */,
 				C549205E274E982D00835E43 /* SmartInbox-Bridging-Header.h */,
 				C5492064274E9B5100835E43 /* MailClientModule.swift */,
 				C5492066274E9B9E00835E43 /* MailModuleBridge.m */,
 			);
 			path = MailClientModule;
+			sourceTree = "<group>";
+		};
+		C5A3C101275275410044A77B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C5A3C102275275500044A77B /* DateExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		C5DE4412274FE08B00ED2959 /* Models */ = {
@@ -474,6 +485,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5492065274E9B5100835E43 /* MailClientModule.swift in Sources */,
+				C5A3C103275275500044A77B /* DateExtension.swift in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				C5DE4414274FE09D00ED2959 /* MailMessage.swift in Sources */,

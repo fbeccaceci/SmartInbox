@@ -1,0 +1,1 @@
+export { default as useFetchAllMails } from './useFetchAllMails'

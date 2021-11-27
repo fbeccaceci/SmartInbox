@@ -6,11 +6,11 @@ const WIDTH = Dimensions.get("window").width
 export default StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    backgroundColor: Palette.background
+    width: "100%",
+    backgroundColor: Palette.background,
   },
   flatList: {
-    width: "100%"
+    width: "100%",
   },
   flatListContent: {
     width: "100%",
@@ -22,10 +22,5 @@ export default StyleSheet.create({
   },
   flatListItemSeparator: {
     height: Padding.xl
-  },
-  headerContainer: {
-    width: "100%",
-    paddingHorizontal: Padding.xl,
-    marginVertical: Padding.m
   },
 });

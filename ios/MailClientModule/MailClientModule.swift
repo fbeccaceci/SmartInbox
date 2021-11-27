@@ -69,11 +69,12 @@ class MailClientMoudle: NSObject {
         myGroup.enter()
         
         let message = msgs[i]
-        let subject = message.header.subject
+        
         let mailMessage = MailMessage()
-        mailMessage.subject = subject
-        
-        
+        mailMessage.senderDisplayName = message.header.sender.displayName
+        mailMessage.senderMailbox = message.header.sender.mailbox
+        mailMessage.subject = message.header.subject
+        mailMessage.date = message.header.date
         
         let operation: MCOIMAPFetchContentOperation = self.session.fetchMessageOperation(withFolder: "INBOX", uid: message.uid)
         operation.start { (Error, data) in
@@ -97,7 +98,10 @@ class MailClientMoudle: NSObject {
        }
       }
       myGroup.notify(queue: .main) {
-       resolve(messages)
+        messages.sort {
+          $0["date"] as! String > $1["date"] as! String
+        }
+        resolve(messages)
       }
     }
   }
