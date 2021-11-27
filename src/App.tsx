@@ -3,9 +3,9 @@ import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { Provider } from 'react-redux'
 import { NavigationContainer } from '@react-navigation/native';
 
-import { InboxScreen } from './screens';
 import { store } from '@redux/store';
 import { AuthorizationLifeCycleWrapper } from '@components';
+import { InboxStack } from '@navigators';
 
 import './configs/momentConfig'
 import './services/authenticationService'
@@ -17,7 +17,7 @@ const App: React.FC = () => {
       <Provider store={store} >
         <AuthorizationLifeCycleWrapper>
           <SafeAreaProvider>
-            <InboxScreen />
+            <InboxStack />
           </SafeAreaProvider>
         </AuthorizationLifeCycleWrapper>
       </Provider>

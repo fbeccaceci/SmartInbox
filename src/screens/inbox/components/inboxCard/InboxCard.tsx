@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, Pressable} from 'react-native';
 import Image from 'react-native-fast-image'
 import moment from 'moment'
 
@@ -8,10 +8,11 @@ import { InboxCardModel } from '@models';
 
 
 interface Props {
-  model: InboxCardModel
+  model: InboxCardModel;
+  onPress?(): void;
 }
  
-const InboxCard: React.FC<Props> = ({model}) => {
+const InboxCard: React.FC<Props> = ({model, onPress}) => {
 
   const timeAgo = moment(model.date).fromNow()
 
@@ -20,7 +21,7 @@ const InboxCard: React.FC<Props> = ({model}) => {
   </View>
 
   return (
-    <View style={styles.card}>
+    <Pressable style={styles.card} onPress={onPress} >
       {model.profilePicture 
         ? <Image source={{uri: model.profilePicture}} style={styles.profilePicture} />
         : NoProfilePictureImage}
@@ -36,7 +37,7 @@ const InboxCard: React.FC<Props> = ({model}) => {
         </View>
         <Text style={styles.contentText} numberOfLines={4} >{model.content}</Text>
       </View>
-    </View>
+    </Pressable>
   );
 };
 

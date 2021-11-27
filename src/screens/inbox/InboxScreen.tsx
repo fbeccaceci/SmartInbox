@@ -2,15 +2,21 @@ import React, { useMemo } from 'react';
 import {View, FlatList} from 'react-native';
 import Animated, {useSharedValue, useAnimatedScrollHandler} from 'react-native-reanimated'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 import styles from './inboxStyle';
 import {InboxCard, NavigationBar, Title} from './components'
 import { InboxCardModel } from '@models';
 import { useFetchAllMails } from '@hooks';
+import { InboxStackParamList } from '@navigators';
 
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList)
 
-const InboxScreen: React.FC = () => {
+interface Props {
+  navigation: NativeStackNavigationProp<InboxStackParamList, "inbox">
+}
+
+const InboxScreen: React.FC<Props> = ({navigation}) => {
   const insets = useSafeAreaInsets()
 
   const mails = useFetchAllMails()
@@ -35,6 +41,14 @@ const InboxScreen: React.FC = () => {
     }
   })
 
+  const onCardPressed = (index: number) => () => {
+    if(!mails) return
+
+    const mail = mails[index]
+    console.log(index)
+    navigation.navigate('mailView', {mail})
+  }
+
   const ItemSeparator = <View style={styles.flatListItemSeparator} />
 
   return (
@@ -55,7 +69,7 @@ const InboxScreen: React.FC = () => {
             </>
           }
           return <>
-            <InboxCard model={item as InboxCardModel} />
+            <InboxCard model={item as InboxCardModel} onPress={onCardPressed(index - 1)} />
             {ItemSeparator}
           </>
         }} />

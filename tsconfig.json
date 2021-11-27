@@ -62,6 +62,7 @@
     "baseUrl": "./",
     "paths": {
       "@screens/*": ["src/screens/*"],
+      "@screens": ["src/screens"],
       "@styles": ["src/styles"],
       "@assets/*": ["src/assets/*"],
       "@components": ["src/components"],
@@ -70,7 +71,8 @@
       "@redux/*": ["src/redux/*"],
       "@services/*": ["src/services/*"],
       "@services": ["src/services"],
-      "@hooks": ["src/hooks"]
+      "@hooks": ["src/hooks"],
+      "@navigators": ["src/navigators"]
     }
   },
   "exclude": [
