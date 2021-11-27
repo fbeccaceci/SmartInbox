@@ -7,3 +7,8 @@ export const selectMails = createSelector(
   selectSelf,
   state => state.mails
 )
+
+export const selectInboxStatus = createSelector(
+  selectSelf,
+  state => state.inboxStatus
+)

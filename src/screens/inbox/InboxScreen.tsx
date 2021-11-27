@@ -3,12 +3,14 @@ import {View, FlatList} from 'react-native';
 import Animated, {useSharedValue, useAnimatedScrollHandler} from 'react-native-reanimated'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useSelector } from 'react-redux';
 
 import styles from './inboxStyle';
 import {InboxCard, NavigationBar, Title} from './components'
-import { InboxCardModel } from '@models';
+import { ApiObjectStatus, InboxCardModel } from '@models';
 import { useFetchAllMails } from '@hooks';
 import { InboxStackParamList } from '@navigators';
+import { InboxSelectors } from '@redux/selectors';
 
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList)
 
@@ -18,6 +20,9 @@ interface Props {
 
 const InboxScreen: React.FC<Props> = ({navigation}) => {
   const insets = useSafeAreaInsets()
+
+  const inboxStatus = useSelector(InboxSelectors.selectInboxStatus)
+  const isLoading = inboxStatus === ApiObjectStatus.IDLE || inboxStatus === ApiObjectStatus.PENDING 
 
   const mails = useFetchAllMails()
   const cards = useMemo(() => {
@@ -58,7 +63,7 @@ const InboxScreen: React.FC<Props> = ({navigation}) => {
         scrollEventThrottle={16} 
         style={styles.flatList}
         contentContainerStyle={[styles.flatListContent, {paddingBottom: insets.bottom}]}
-        ListHeaderComponent={() => <NavigationBar scroll={scrollY} />}
+        ListHeaderComponent={() => <NavigationBar loading={isLoading} scroll={scrollY} />}
         ListHeaderComponentStyle={styles.flatListHeaderContainer}
         stickyHeaderIndices={[0]}
         data={cards} 

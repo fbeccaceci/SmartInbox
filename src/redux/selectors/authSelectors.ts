@@ -23,3 +23,8 @@ export const selectRefreshToken = createSelector(
   selectSelf,
   state => state.refreshToken
 )
+
+export const selectAuthStatus = createSelector(
+  selectSelf,
+  state => state.authStatus
+)
