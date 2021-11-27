@@ -14,10 +14,11 @@ const MAX_SCROLL = 200
 
 interface Props {
   scroll: Animated.SharedValue<number>;
-  loading: boolean
+  loading: boolean,
+  openSettings(): void
 }
 
-const NavigationBar: React.FC<Props> = ({scroll, loading}) => {
+const NavigationBar: React.FC<Props> = ({scroll, loading, openSettings}) => {
   const insets = useSafeAreaInsets()
 
   const progress  = useDerivedValue(() => interpolate(scroll.value, [0, MAX_SCROLL], [0, 1], Extrapolate.CLAMP), [scroll])
@@ -37,7 +38,7 @@ const NavigationBar: React.FC<Props> = ({scroll, loading}) => {
       <View style={[styles.iconContainer, {justifyContent: "flex-end"}]} >
         <IconButton style={styles.icon} IconComponent={SendIcon} />
         <View style={styles.iconDivider} />
-        <IconButton style={styles.icon} IconComponent={SettingsIcon} />
+        <IconButton style={styles.icon} IconComponent={SettingsIcon} onPress={openSettings} />
       </View>
     </View>
   );

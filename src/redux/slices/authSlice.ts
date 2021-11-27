@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { authorizeUser, authorizeSavedUser } from '../thunks'
+import { authorizeUser, authorizeSavedUser, logOutUser } from '../thunks'
 import { ApiObjectStatus } from "@models";
 
 interface State {
@@ -50,6 +50,14 @@ const authSlice = createSlice({
     })
     builder.addCase(authorizeSavedUser.rejected, (state) => {
       state.authStatus = ApiObjectStatus.FAILED
+    })
+
+    builder.addCase(logOutUser.fulfilled, state => {
+      state.authStatus = ApiObjectStatus.FAILED //We put failed so AuthenticationFlowNavigator understand is a logout rather than a fresh install
+      state.authToken = undefined
+      state.authTokenExpirationDate = undefined
+      state.refreshToken = undefined
+      state.emailAddress = undefined
     })
   } 
 })

@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import {View, FlatList} from 'react-native';
 import Animated, {useSharedValue, useAnimatedScrollHandler} from 'react-native-reanimated'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -46,6 +46,10 @@ const InboxScreen: React.FC<Props> = ({navigation}) => {
     }
   })
 
+  const openSettings = useCallback(() => {
+    navigation.navigate('settings')
+  }, [navigation])
+
   const onCardPressed = (index: number) => () => {
     if(!mails) return
 
@@ -62,7 +66,7 @@ const InboxScreen: React.FC<Props> = ({navigation}) => {
         scrollEventThrottle={16} 
         style={styles.flatList}
         contentContainerStyle={[styles.flatListContent, {paddingBottom: insets.bottom}]}
-        ListHeaderComponent={() => <NavigationBar loading={isLoading} scroll={scrollY} />}
+        ListHeaderComponent={() => <NavigationBar loading={isLoading} scroll={scrollY} openSettings={openSettings} />}
         ListHeaderComponentStyle={styles.flatListHeaderContainer}
         stickyHeaderIndices={[0]}
         data={cards} 

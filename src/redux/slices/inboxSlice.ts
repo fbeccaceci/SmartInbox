@@ -1,7 +1,7 @@
 import { ApiObjectStatus } from "@models";
 import { createSlice } from "@reduxjs/toolkit";
 import { MailMessage } from "src/modules/mailClientModule";
-import { fetchAllMails } from '../thunks'
+import { fetchAllMails, logOutUser } from '../thunks'
 
 interface State {
   mails?: MailMessage[],
@@ -28,6 +28,11 @@ export default createSlice({
     })
     builder.addCase(fetchAllMails.rejected, (state) => {
       state.inboxStatus = ApiObjectStatus.FAILED
+    })
+
+    builder.addCase(logOutUser.fulfilled, state => {
+      state.mails = undefined
+      state.inboxStatus = ApiObjectStatus.IDLE
     })
   }
 })
