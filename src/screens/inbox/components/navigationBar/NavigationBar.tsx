@@ -6,6 +6,7 @@ import Animated, { Extrapolate, interpolate, useAnimatedStyle, useDerivedValue }
 import styles from './navigationBarStyle'
 import SearchIcon from "@assets/images/navigationBar/search-icon.svg"
 import SendIcon from "@assets/images/navigationBar/send-icon.svg"
+import SettingsIcon from '@assets/images/navigationBar/settings-icon.svg'
 import { IconButton } from '@components';
 import { Palette } from '@styles';
 
@@ -27,11 +28,17 @@ const NavigationBar: React.FC<Props> = ({scroll, loading}) => {
 
   return (
     <View style={[styles.container, {marginTop: insets.top}]}>
-      {
-        loading ? <ActivityIndicator color={Palette.white} /> : <IconButton style={styles.icon} IconComponent={SearchIcon} />
-      }
+      <View style={[styles.iconContainer, {justifyContent: "flex-start"}]} >
+        {
+          loading ? <ActivityIndicator color={Palette.white} /> : <IconButton style={styles.icon} IconComponent={SearchIcon} />
+        }
+      </View>
       <Animated.Text style={[titleAnimStyle, styles.title]} >Inbox</Animated.Text>
-      <IconButton style={styles.icon} IconComponent={SendIcon} />
+      <View style={[styles.iconContainer, {justifyContent: "flex-end"}]} >
+        <IconButton style={styles.icon} IconComponent={SendIcon} />
+        <View style={styles.iconDivider} />
+        <IconButton style={styles.icon} IconComponent={SettingsIcon} />
+      </View>
     </View>
   );
 };

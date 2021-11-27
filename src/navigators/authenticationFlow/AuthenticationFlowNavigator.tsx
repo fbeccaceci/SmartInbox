@@ -21,7 +21,7 @@ const AuthenticationFlowNavigator: React.FC = () => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    AsyncStorage.clear()
+    // /AsyncStorage.clear()
     dispatch(authorizeSavedUser())
   }, [])
 
