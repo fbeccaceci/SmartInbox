@@ -50,7 +50,6 @@ const InboxScreen: React.FC<Props> = ({navigation}) => {
     if(!mails) return
 
     const mail = mails[index]
-    console.log(index)
     navigation.navigate('mailView', {mail})
   }
 
