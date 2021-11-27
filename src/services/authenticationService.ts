@@ -28,3 +28,19 @@ export const authorize = async (): Promise<AuthorizationResponse> => {
     throw new AuthorizationError(error.message);
   }
 }
+
+export const refresh = async (refreshToken: string): Promise<AuthorizationResponse> => {
+  try {
+    let result = await AppAuth.refresh(config, {
+      refreshToken
+    });
+    return {
+      accessToken: result.accessToken,
+      accessTokenExpirationDate: result.accessTokenExpirationDate,
+      refreshToken: result.refreshToken || refreshToken
+    }
+  } catch(err) {
+    const error = err as Error
+    throw new AuthorizationError(error.message);
+  }
+}
