@@ -11,7 +11,7 @@ export default StyleSheet.create({
   },
   flatList: {
     width: "100%",
-  },
+},
   flatListContent: {
     width: "100%",
     alignItems: "center",

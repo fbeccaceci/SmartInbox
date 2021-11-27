@@ -6,7 +6,6 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import styles from './inboxStyle';
 import {InboxCard, NavigationBar, Title} from './components'
 import { InboxCardModel } from '@models';
-import { Padding } from '@styles';
 import { useFetchAllMails } from '@hooks';
 
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList)
