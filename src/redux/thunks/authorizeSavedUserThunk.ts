@@ -22,14 +22,16 @@ export default createAsyncThunk<RESULT, PARAMETER, THUNK_CONFIG>(
     const savedAuthToken = await AsyncStorage.getItem(AsyncStorageKeys.userAccessToken)
     const savedAuthTokenExpireDate = await AsyncStorage.getItem(AsyncStorageKeys.userAccessTokenExpireDate)
     const savedRefreshToken = await AsyncStorage.getItem(AsyncStorageKeys.userRefreshToken)
-    if(savedAuthToken && savedAuthTokenExpireDate && savedRefreshToken) {
+    const savedEmailAddress = await AsyncStorage.getItem(AsyncStorageKeys.userEmailAddress)
+    if(savedAuthToken && savedAuthTokenExpireDate && savedRefreshToken && savedEmailAddress) {
       const expireDate = new Date(savedAuthTokenExpireDate)
       if(expireDate > new Date()) {
         console.log("Authorized user with saved token");
         return {
           accessToken: savedAuthToken,
           accessTokenExpirationDate: savedAuthTokenExpireDate,
-          refreshToken: savedRefreshToken
+          refreshToken: savedRefreshToken,
+          emailAddress: savedEmailAddress
         }
       }
 
@@ -37,6 +39,8 @@ export default createAsyncThunk<RESULT, PARAMETER, THUNK_CONFIG>(
       try {
         let result = await AuthenticationService.refresh(savedRefreshToken)
         console.log("Authorized user with saved token");
+
+        AsyncStorage.setItem(AsyncStorageKeys.userAccessToken, result.accessToken)
         return result
       } catch(err) {
         const error = err as AuthorizationError
@@ -46,6 +50,5 @@ export default createAsyncThunk<RESULT, PARAMETER, THUNK_CONFIG>(
 
     console.log("Authentication with saved user failed due to: No saved user found");
     return rejectWithValue("No saved user")
-
   }
 )

@@ -8,18 +8,21 @@ import { fetchAllMails } from '@redux/thunks'
 
 export default () => {
   const dispatch = useAppDispatch()
-  const { selectAuthToken } = AuthSelectors
+  const { selectAuthToken, selectEmailAddress } = AuthSelectors
   const { selectMails } = InboxSelectors
 
   const authToken = useSelector(selectAuthToken)
+  const emailAddress = useSelector(selectEmailAddress)
   const mails = useSelector(selectMails)
 
   useEffect(() => {
+    if(!emailAddress) return
+
     if(authToken) {
-      MailClientModule.initializeSession(authToken, "beccaceci.fabrizio03@gmail.com")
+      MailClientModule.initializeSession(authToken, emailAddress)
       dispatch(fetchAllMails())
     }
-  }, [authToken])
+  }, [authToken, emailAddress])
 
   return mails
 }

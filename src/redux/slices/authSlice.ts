@@ -7,6 +7,7 @@ interface State {
   authToken?: string;
   authTokenExpirationDate?: string;
   refreshToken?: string;
+  emailAddress?: string;
   authStatus: ApiObjectStatus
 }
 
@@ -26,6 +27,7 @@ const authSlice = createSlice({
       state.authToken = payload.accessToken
       state.authTokenExpirationDate = payload.accessTokenExpirationDate
       state.refreshToken = payload.refreshToken
+      state.emailAddress = payload.emailAddress
     })
     builder.addCase(authorizeUser.pending, (state) => {
       state.authStatus = ApiObjectStatus.PENDING
@@ -41,6 +43,7 @@ const authSlice = createSlice({
       state.authToken = payload.accessToken
       state.authTokenExpirationDate = payload.accessTokenExpirationDate
       state.refreshToken = payload.refreshToken
+      state.emailAddress = payload.emailAddress
     })
     builder.addCase(authorizeSavedUser.pending, (state) => {
       state.authStatus = ApiObjectStatus.PENDING

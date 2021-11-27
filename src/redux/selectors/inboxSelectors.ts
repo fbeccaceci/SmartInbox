@@ -1,7 +1,7 @@
-import { RooState } from "@redux/store";
+import { RootState } from "@redux/store";
 import { createSelector } from "reselect";
 
-const selectSelf = (state: RooState) => state.inbox
+const selectSelf = (state: RootState) => state.inbox
 
 export const selectMails = createSelector(
   selectSelf,

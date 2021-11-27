@@ -1,7 +1,7 @@
-import { RooState } from "@redux/store";
+import { RootState } from "@redux/store";
 import { createSelector } from "reselect";
 
-const selectSelf = (state: RooState) => state.auth
+const selectSelf = (state: RootState) => state.auth
 
 export const selectAuthToken = createSelector(
   selectSelf,
@@ -27,6 +27,11 @@ export const selectRefreshToken = createSelector(
 export const selectAuthStatus = createSelector(
   selectSelf,
   state => state.authStatus
+)
+
+export const selectEmailAddress = createSelector(
+  selectSelf,
+  state => state.emailAddress
 )
 
 export const selectIsAuthenticated = createSelector(

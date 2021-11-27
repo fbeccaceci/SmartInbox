@@ -72,7 +72,9 @@
       "@services/*": ["src/services/*"],
       "@services": ["src/services"],
       "@hooks": ["src/hooks"],
-      "@navigators": ["src/navigators"]
+      "@navigators": ["src/navigators"],
+      "@apis": ["src/apis"],
+      "@apis/*": ["src/apis/*"]
     }
   },
   "exclude": [
