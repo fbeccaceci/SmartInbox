@@ -14,7 +14,7 @@ const initialState: State = {
 
 export default createSlice({
   name: "inbox",
-  initialState: {} as State,
+  initialState: initialState,
   reducers: {},
   extraReducers: builder => {
     builder.addCase(fetchAllMails.fulfilled, (state, action) => {

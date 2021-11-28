@@ -33,10 +33,6 @@ const AuthenticationFlowNavigator: React.FC = () => {
   }
 
   return (
-    isLoggedIn ? <InboxStack /> : <LoginScreen />
-  )
-
-  return (
     <Stack.Navigator screenOptions={config} >
       {
         isLoggedIn ? (
