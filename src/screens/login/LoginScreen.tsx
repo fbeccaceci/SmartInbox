@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import {View, Text, Pressable, StatusBar} from 'react-native';
+import {View, Text, Pressable, StatusBar, Platform} from 'react-native';
 import Image from 'react-native-fast-image'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -9,6 +9,7 @@ import BackgroundImage from '@assets/images/loginScreen/login-image.jpg'
 import GoogleIcon from '@assets/images/loginScreen/google-icon.svg'
 import { useAppDispatch } from '@redux/hooks';
 import { authorizeUser } from '@redux/thunks';
+import { Palette } from '@styles';
 
 const LoginScreen: React.FC = () => {
   const insets = useSafeAreaInsets()
@@ -20,7 +21,10 @@ const LoginScreen: React.FC = () => {
 
   return (
     <>
-      <StatusBar hidden />
+      {Platform.select({
+        ios: <StatusBar hidden />,
+        android: <StatusBar translucent backgroundColor={Palette.statusBar} />
+      })}
       <View style={styles.container}>
         <Image style={styles.backgroundImage} source={BackgroundImage} />
         <View style={[styles.loginContainer, {paddingBottom: insets.bottom}]} >
